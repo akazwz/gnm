@@ -18,7 +18,7 @@ type NodeVersion struct {
 	Version  string      `json:"version"`
 	Date     string      `json:"date"`
 	Files    []string    `json:"files"`
-	LTS      interface{} `json:"lts"`
+	LTS      any `json:"lts"`
 	Security bool        `json:"security"`
 }
 
@@ -227,7 +227,7 @@ func IsVersionInstalled(version string) bool {
 }
 
 // IsLTS checks if a version is LTS
-func IsLTS(lts interface{}) bool {
+func IsLTS(lts any) bool {
 	// LTS can be a string codename or boolean
 	switch v := lts.(type) {
 	case bool:
